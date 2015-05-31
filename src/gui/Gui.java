@@ -25,6 +25,9 @@ public class Gui {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private boolean started = false;
+	private boolean isPaused = false;
+	private Simulation sim;
 
 	/**
 	 * Launch the application.
@@ -61,7 +64,14 @@ public class Gui {
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Simulation sim = new Simulation();
+				if(started == false){
+					sim = new Simulation();
+					started = true;
+				}else if(isPaused == true){
+					sim.getTimer().start();
+					isPaused = false;
+				}
+				
 			}
 		});
 		btnStart.setFont(new Font("Comic Sans MS", Font.ITALIC, 11));
@@ -69,6 +79,14 @@ public class Gui {
 		frame.getContentPane().add(btnStart);
 		
 		JButton btnStop = new JButton("Stop");
+		btnStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(started == true && isPaused == false){
+					sim.getTimer().stop();
+					isPaused = true;
+				}
+			}
+		});
 		btnStop.setFont(new Font("Comic Sans MS", Font.ITALIC, 11));
 		btnStop.setBounds(236, 228, 89, 23);
 		frame.getContentPane().add(btnStop);

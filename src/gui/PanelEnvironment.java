@@ -149,4 +149,8 @@ public class PanelEnvironment extends JFrame implements ActionListener
 			repaint();
 		}
 	}
+	
+	public Timer getTimer(){
+		return timer;
+	}
 }
