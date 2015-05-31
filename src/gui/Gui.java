@@ -25,9 +25,11 @@ public class Gui {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private Gui window;
 	private boolean started = false;
 	private boolean isPaused = false;
 	private Simulation sim;
+	private int nourriture = 0;
 
 	/**
 	 * Launch the application.
@@ -65,7 +67,7 @@ public class Gui {
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(started == false){
-					sim = new Simulation();
+					sim = new Simulation(window);
 					started = true;
 				}else if(isPaused == true){
 					sim.getTimer().start();
@@ -116,6 +118,7 @@ public class Gui {
 		textField_1.setBounds(124, 171, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
+		//textField_1.setText(nourriture);
 		
 		JLabel lblQtePheromone = new JLabel("Qte pheromone");
 		lblQtePheromone.setBounds(236, 151, 115, 23);
@@ -141,5 +144,9 @@ public class Gui {
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
+	}
+	
+	public void setNourriture(int nour){
+		nourriture = nour;
 	}
 }

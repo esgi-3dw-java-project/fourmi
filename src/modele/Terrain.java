@@ -33,11 +33,21 @@ public class Terrain {
 		grille = new Cellule[taille][taille];
 		this.nbFourmis = _nbFourmis ;
 		init();
-		initNourriture();
+		initNourriture();	
 		xNid = taille/2;
 		yNid = taille/2;
 		initNid();
 		initFourmis(nbFourmis);
+	}
+	
+	public int getAllNourriture(){
+		int nourriture = 0;
+		/*PARCOURS GET NOURRITURE*/
+		for(int i=0; i<taille; i++)
+			for(int j=0; j<taille; j++)
+				nourriture += grille[i][j].getNourriture();
+		
+		return nourriture;
 	}
 
 

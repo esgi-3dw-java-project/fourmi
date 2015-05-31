@@ -35,6 +35,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	private JPanel jpanel;
 	/**couleur du terrain*/
 	private final Color colTerrain;
+	private Gui gui;
 
 	/** constructeur par defaut, définit la couleur du terrain et lance l'initialisation*/
 	public PanelEnvironment()
@@ -44,7 +45,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	}
 	
 	/** constructeur par defaut, définit la couleur du terrain, relie ce panneau graphique au modèle, lance l'initialisation, ainsi que le TImer*/
-	public PanelEnvironment(Terrain _matrice, int tempo)
+	public PanelEnvironment(Terrain _matrice, int tempo, Gui window)
 	{
 		terrain = _matrice;
 		taille = terrain.getTaille();
@@ -52,6 +53,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 		init();
 		timer = new Timer(tempo, this);
 		timer.start();
+		//window.setNourriture(terrain.getAllNourriture());
 	}
 
 	/** 
