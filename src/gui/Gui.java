@@ -61,7 +61,7 @@ public class Gui {
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Lunch simulation
+				Simulation sim = new Simulation();
 			}
 		});
 		btnStart.setFont(new Font("Comic Sans MS", Font.ITALIC, 11));
