@@ -4,19 +4,25 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import appli.Simulation;
+
 import javax.swing.JToolBar;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 
 public class Gui {
@@ -30,12 +36,17 @@ public class Gui {
 	private boolean isPaused = false;
 	private Simulation sim;
 	private int nourriture = 0;
+	private int pheromone = 0;
+	private Timer timer;
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void launch() {
-		EventQueue.invokeLater(new Runnable() {
+	public void launch() {
+		this.initialize();
+		this.frame.setVisible(true);
+		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Gui window = new Gui();
@@ -44,14 +55,15 @@ public class Gui {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public Gui() {
-		initialize();
+		window = this;
 	}
 
 	/**
@@ -118,7 +130,6 @@ public class Gui {
 		textField_1.setBounds(124, 171, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-		//textField_1.setText(nourriture);
 		
 		JLabel lblQtePheromone = new JLabel("Qte pheromone");
 		lblQtePheromone.setBounds(236, 151, 115, 23);
@@ -137,16 +148,32 @@ public class Gui {
 		spinner_1.setBounds(131, 29, 105, 23);
 		frame.getContentPane().add(spinner_1);
 	}
+	
+	
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
+			
 		}
 	}
 	
 	public void setNourriture(int nour){
 		nourriture = nour;
+		int nour_apportee = 0 + (6200-nour);
+		String s = String.valueOf(nourriture);
+		String s1 = String.valueOf(nour_apportee);
+		textField_1.setText(s);
+		textField.setText(s1);
 	}
+	
+	public void setPheromone(int phero){
+		pheromone = phero;
+		String s = String.valueOf(phero);
+		textField_2.setText(s);
+	}
+	
+	
 }

@@ -35,7 +35,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	private JPanel jpanel;
 	/**couleur du terrain*/
 	private final Color colTerrain;
-	private Gui gui;
+	private Gui window;
 
 	/** constructeur par defaut, définit la couleur du terrain et lance l'initialisation*/
 	public PanelEnvironment()
@@ -53,7 +53,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 		init();
 		timer = new Timer(tempo, this);
 		timer.start();
-		//window.setNourriture(terrain.getAllNourriture());
+		this.window = window;		
 	}
 
 	/** 
@@ -147,6 +147,10 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == timer) {
+			
+			window.setNourriture(terrain.getAllNourriture());
+			window.setPheromone(terrain.getAllPheromone());
+			//System.out.println(terrain.getAllNourriture());
 			terrain.animGrille();
 			repaint();
 		}

@@ -16,7 +16,8 @@ public class LesFourmis
 	/** cree un objet PanelEnvironment */
 	public static void main(String args[])
 	{
-		Gui.launch();
+		Gui g = new Gui();
+		g.launch();
 		
 		//int tailleTerrain = 70;
 		//int nbFourmis = 30;

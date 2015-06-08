@@ -47,8 +47,22 @@ public class Terrain {
 			for(int j=0; j<taille; j++)
 				nourriture += grille[i][j].getNourriture();
 		
+		
 		return nourriture;
 	}
+	
+	public int getAllPheromone(){
+		int pheromone = 0;
+		
+		for(int i=0; i<taille; i++)
+			for(int j=0; j<taille; j++)
+				pheromone += grille[i][j].getPheromone();
+		
+		
+		return pheromone;
+	}
+	
+	
 
 
 	/** 
