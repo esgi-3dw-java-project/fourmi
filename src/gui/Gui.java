@@ -112,17 +112,16 @@ public class Gui {
 		btnStop.setBounds(236, 228, 89, 23);
 		frame.getContentPane().add(btnStop);
 		
-		JSpinner spinner = new JSpinner();
+		SpinnerNumberModel model1 = new SpinnerNumberModel(new Integer(30),new Integer(0),new Integer(100),new Integer(1));
+		JSpinner spinner = new JSpinner(model1);
 		spinner.addChangeListener(new ChangeListener() {
-			//double value = (double) spinner_1.getValue();
+			int tempo = (int) spinner.getValue();
 			public void stateChanged(ChangeEvent arg0) {
-				/*if(value < (double) spinner_1.getValue() && (double) spinner_1.getValue() <= 10){
-					Cellule.evaporation += 0.1;
-				}else if(value > (double) spinner_1.getValue() && (double) spinner_1.getValue() > 0){
-					Cellule.evaporation -= 0.1;
+				if(tempo < (int) spinner.getValue() && (int) spinner.getValue() <= 100){
+					sim.getTimer().setDelay((int) spinner.getValue());
+				}else if(tempo > (int) spinner.getValue() && (int) spinner.getValue() > 0){
+					sim.getTimer().setDelay((int) spinner.getValue());
 				}
-				value = (double) spinner_1.getValue();
-				System.out.println(Cellule.evaporation);*/
 			}
 		});
 		spinner.setBounds(10, 29, 105, 23);

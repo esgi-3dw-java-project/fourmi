@@ -61,7 +61,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	 */
 	void init()
 	{
-		setBounds(10,10,3*espace + taille*espace, 5*espace + taille*espace);
+		setBounds(550,100,3*espace + taille*espace, 5*espace + taille*espace);
 		jpanel = new JPanel();
 		jpanel.setBackground(Color.gray);
 		setBackground(Color.black);
