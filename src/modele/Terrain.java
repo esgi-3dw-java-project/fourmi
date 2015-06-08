@@ -5,7 +5,7 @@ package modele;
  * @author Emmanuel Adam*/
 public class Terrain {
 	/** grille a l'instant t*/
-	private Cellule [][] grille;
+	public Cellule [][] grille;
 	/** taille de la grille*/
 	private int taille;
 	/** nombre de fourmis */

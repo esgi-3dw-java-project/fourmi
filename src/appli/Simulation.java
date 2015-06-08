@@ -12,7 +12,7 @@ public class Simulation {
 	public Simulation(Gui window){
 		int tailleTerrain = 70;
 		int nbFourmis = 30;
-		int tauxDeRaffraichissementEnMilliseconde = 16;
+		int tauxDeRaffraichissementEnMilliseconde = 30;
 		Terrain terrain = new Terrain(tailleTerrain, nbFourmis);
 		panelEnv = new PanelEnvironment(terrain, tauxDeRaffraichissementEnMilliseconde,window);
 	}

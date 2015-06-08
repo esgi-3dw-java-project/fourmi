@@ -150,7 +150,6 @@ public class PanelEnvironment extends JFrame implements ActionListener
 			
 			window.setNourriture(terrain.getAllNourriture());
 			window.setPheromone(terrain.getAllPheromone());
-			//System.out.println(terrain.getAllNourriture());
 			terrain.animGrille();
 			repaint();
 		}

@@ -8,7 +8,7 @@ public class Cellule
 	/**coordonnee de la cellule dans la grille*/ 
 	private int x,y;
 	/** degre d'evaporation de la pheromonoe (% de perte par tour)*/
-	static double evaporation  = 0.1;
+	public static double evaporation  = 0.1;
 	/** degre de diffusion de la pheromone (% de distribution aux voisines par tour)*/
 	static final double diffusion = 0.009;
 	/** seuil a partir duquel la pheromone est consideree comme nulle*/

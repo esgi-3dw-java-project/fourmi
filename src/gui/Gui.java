@@ -22,7 +22,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.Timer;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+import modele.Cellule;
 
 
 public class Gui {
@@ -38,10 +43,12 @@ public class Gui {
 	private int nourriture = 0;
 	private int pheromone = 0;
 	private Timer timer;
+
 	
 
 	/**
 	 * Launch the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public void launch() {
 		this.initialize();
@@ -60,7 +67,7 @@ public class Gui {
 
 	/**
 	 * Create the application.
-	 * @wbp.parser.entryPoint
+	 * 
 	 */
 	public Gui() {
 		window = this;
@@ -106,6 +113,18 @@ public class Gui {
 		frame.getContentPane().add(btnStop);
 		
 		JSpinner spinner = new JSpinner();
+		spinner.addChangeListener(new ChangeListener() {
+			//double value = (double) spinner_1.getValue();
+			public void stateChanged(ChangeEvent arg0) {
+				/*if(value < (double) spinner_1.getValue() && (double) spinner_1.getValue() <= 10){
+					Cellule.evaporation += 0.1;
+				}else if(value > (double) spinner_1.getValue() && (double) spinner_1.getValue() > 0){
+					Cellule.evaporation -= 0.1;
+				}
+				value = (double) spinner_1.getValue();
+				System.out.println(Cellule.evaporation);*/
+			}
+		});
 		spinner.setBounds(10, 29, 105, 23);
 		frame.getContentPane().add(spinner);
 		
@@ -144,7 +163,20 @@ public class Gui {
 		lblVitesseDissipation.setBounds(135, 10, 89, 23);
 		frame.getContentPane().add(lblVitesseDissipation);
 		
-		JSpinner spinner_1 = new JSpinner();
+		SpinnerNumberModel model = new SpinnerNumberModel(0.1,0.1,1.,0.1 );
+		JSpinner spinner_1 = new JSpinner(model);
+		spinner_1.addChangeListener(new ChangeListener() {
+			double value = (double) spinner_1.getValue();
+			public void stateChanged(ChangeEvent arg0) {
+				if(value < (double) spinner_1.getValue() && (double) spinner_1.getValue() <= 10){
+					Cellule.evaporation += 0.1;
+				}else if(value > (double) spinner_1.getValue() && (double) spinner_1.getValue() > 0){
+					Cellule.evaporation -= 0.1;
+				}
+				value = (double) spinner_1.getValue();
+				System.out.println(Cellule.evaporation);
+			}
+		});
 		spinner_1.setBounds(131, 29, 105, 23);
 		frame.getContentPane().add(spinner_1);
 	}
