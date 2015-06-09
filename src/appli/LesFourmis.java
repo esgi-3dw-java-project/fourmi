@@ -1,8 +1,5 @@
 package appli;
-/**
- * LesFourmis.java
- * @author Emmanuel Adam 
- */
+
 
 import modele.Terrain;
 import gui.PanelEnvironment;

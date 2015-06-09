@@ -17,7 +17,6 @@ import modele.Terrain;
 
 /**
  * represente la fenetre affichant la grille des cellules
- * @author  Emmanuel Adam
  */
 @SuppressWarnings("serial")
 public class PanelEnvironment extends JFrame implements ActionListener
@@ -49,7 +48,7 @@ public class PanelEnvironment extends JFrame implements ActionListener
 	{
 		terrain = _matrice;
 		taille = terrain.getTaille();
-		colTerrain = new Color(0, 80, 0); // vert foncé
+		colTerrain = Color.gray;
 		init();
 		timer = new Timer(tempo, this);
 		timer.start();

@@ -2,7 +2,7 @@ package modele;
 
 
 /**terrain des cellules de la simulation de fourmis
- * @author Emmanuel Adam*/
+*/
 public class Terrain {
 	/** grille a l'instant t*/
 	public Cellule [][] grille;
@@ -139,7 +139,7 @@ public class Terrain {
 				double odeur = odeurNid / (Math.abs(xNid-cell.getX()) + Math.abs(yNid-cell.getY()));
 				cell.setOdeurNid(odeur);
 			}
-		setNid(xNid, yNid, 2);
+		setNid(xNid, yNid, 0);
 	}
 
 	/**cree les fourmis

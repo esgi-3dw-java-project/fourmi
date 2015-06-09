@@ -1,7 +1,6 @@
 package modele;
 /**
  * cette classe represente une cellule de la simulation de fourmis
- * @author  Emmanuel Adam
  */
 public class Cellule  
 {
