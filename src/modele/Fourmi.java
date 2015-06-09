@@ -60,6 +60,8 @@ public class Fourmi {
 			bougerVersDirection(); // avancer si possible
 			if(grille[x][y].getNourriture()>0) // si on trouve de la nourriture, on passe a l'etat suivant
 				etat = EtatFourmi.PRENDRE;
+			if(grille[x][y].isObstacle())
+				etat = EtatFourmi.EVITER;
 			break;
 		case PRENDRE:
 			grille[x][y].oterNourriture(doseNourriture);// la foumi prend une dose de nourriture dans la cellule
@@ -81,6 +83,8 @@ public class Fourmi {
 			bougerVersDirection();// et avance
 			etat = EtatFourmi.CHERCHER; // elle passe a l'état suivant
 			break;
+		case EVITER:
+			System.out.println("OBSTACLE");
 		}
 	}
 
@@ -98,7 +102,7 @@ public class Fourmi {
 		for(Direction dir:dirAlentours) // recherche de trace de nourriture devant
 		{
 			double nourriture = getNourritureProchaineCase(dir);
-			if(nourriture>bestNourriture) {bestNourriture=nourriture; bestDirection=dir;}
+			if(nourriture>bestNourriture ) {bestNourriture=nourriture; bestDirection=dir;}
 		}
 		if(bestNourriture==0)
 		{
@@ -132,7 +136,10 @@ public class Fourmi {
 		for(Direction dir:directions)
 		{
 			Cellule cell = getNextCellule(dir);
-			if(cell != null && !cell.isFourmis())
+			/*if(cell != null && cell.isObstacle()){
+				boolean obs = getObstacleProchaineCase(dir);
+			}*/
+			if(cell != null && !cell.isFourmis() && !getObstacleProchaineCase(dir))
 				liste.add(dir);
 		}
 		return liste;		
@@ -151,7 +158,7 @@ public class Fourmi {
 		for(Direction dir:dirAlentours) // recherche de trace d'odeur de nid devant
 		{
 			double odeurNid = getOdeurNidProchaineCase(dir);
-			if(odeurNid>bestNid) {bestNid=odeurNid; bestDirection=dir;}
+			if(odeurNid>bestNid && !getObstacleProchaineCase(dir)) {bestNid=odeurNid; bestDirection=dir;}
 		}
 		if(bestNid==0) // si pas trouve, prendre une direction au hasard devant non occupee
 		{
@@ -172,7 +179,7 @@ public class Fourmi {
 	private void bougerVersDirection()
 	{
 		Cellule cell = getNextCellule(direction);
-		if(cell!=null && !cell.isFourmis()) 
+		if(cell!=null && !cell.isFourmis() && !cell.isObstacle()) 
 		{
 			Cellule[][] grille = terrain.getGrille();
 			grille[x][y].setFourmis(false);
@@ -195,6 +202,15 @@ public class Fourmi {
 		return phero;		
 	}
 
+	private boolean getObstacleProchaineCase(Direction dir)
+	{
+		boolean isObs = false;
+		Cellule cell = getNextCellule(dir);
+		if(cell!=null) 
+			if(!cell.isFourmis())isObs = cell.isObstacle();
+		return isObs;		
+	}
+	
 	/**retourne le degre de nourriture dans la case voisine situe dans la direction dir
 	 * @param dir direction vers laquelle il faut effectuer le test
 	 * @return le degre de nourriture dans la case voisine situee dans la direcion dir*/

@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.Random;
+
 
 /**terrain des cellules de la simulation de fourmis
 */
@@ -37,6 +39,7 @@ public class Terrain {
 		xNid = taille/2;
 		yNid = taille/2;
 		initNid();
+		initObstacle();
 		initFourmis(nbFourmis);
 	}
 	
@@ -82,11 +85,11 @@ public class Terrain {
 	 */
 	private void initNourriture()
 	{
-		setNourriture((taille) / 9, taille / 9, 3, 50d);
-		setNourriture((9*taille) / 10, taille / 9, 3, 50d);
-		setNourriture((taille ) / 10, taille / 2, 3, 50d);
-		setNourriture((8*taille ) / 9, (3*taille) / 4, 5, 20d);
-		setNourriture((taille ) / 9, (8*taille) / 9, 4, 30d);
+		setNourriture((taille) / 5, taille / 4, 3, 50d);
+		setNourriture((9*taille) / 2, taille / 9, 3, 50d);
+		setNourriture((taille ) / 10, taille / 3, 3, 50d);
+		setNourriture((8*taille ) / 9, (3*taille) / 4, 3, 20d);
+		setNourriture((taille ) / 5, (8*taille) / 9, 3, 30d);
 	}
 	
 
@@ -105,6 +108,53 @@ public class Terrain {
 				int yy = (yMeat + j + taille) % taille;
 				if((Math.abs(i)+Math.abs(j))<=tailleZone) 
 					grille[xx][yy].setNourriture(meatWeight);
+			}
+		}
+	}
+	
+	private void initObstacle(){
+		setObstacle((taille ) / 4, (8*taille) / 6, 2,2); // 0 = carré ou rectangle / 1 = losange / 2 = forme random
+		setObstacle((taille ) / 9, (8*taille) / 3, 1,2); 
+		setObstacle((taille ) / 3, (8*taille) / 9, 3,2); 
+	}
+	
+	private void setObstacle(int xObs, int yObs, int tailleZone,int typeObstacle){
+		if (typeObstacle == 0){
+			for(int i=-tailleZone; i<=tailleZone; i++)
+			{
+				int xx = (xObs + i + taille) % taille;
+				for(int j=-tailleZone; j<=tailleZone; j++)
+				{
+					int yy = (yObs + j + taille) % taille;
+					//if((Math.abs(i)+Math.abs(j))<=tailleZone) 
+						grille[xx][yy].setObstacle(true);
+				}
+			}
+		}
+		if(typeObstacle == 1){
+			for(int i=-tailleZone; i<=tailleZone; i++)
+			{
+				int xx = (xObs + i + taille) % taille;
+				for(int j=-tailleZone; j<=tailleZone; j++)
+				{
+					int yy = (yObs + j + taille) % taille;
+					if((Math.abs(i)+Math.abs(j))<=tailleZone) 
+						grille[xx][yy].setObstacle(true);
+				}
+			}
+		}
+		if(typeObstacle == 2){
+			for(int i=-tailleZone; i<=tailleZone; i++)
+			{
+				int xx = (xObs + i + taille) % taille;
+				for(int j=-tailleZone; j<=tailleZone; j++)
+				{
+					int yy = (yObs + j + taille) % taille;
+					 Random rand=new Random();
+					 int randomNum = rand.nextInt((1 - 0) + 1) + 0;
+					 if(randomNum == 0)
+						grille[xx][yy].setObstacle(true);
+				}
 			}
 		}
 	}

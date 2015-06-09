@@ -114,7 +114,12 @@ public class PanelEnvironment extends JFrame implements ActionListener
 					alpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f); //retablissement à un affichage opaque
 					g2d.setComposite(alpha);
 				}
-
+				
+				if(cell.isObstacle()){
+					g2d.setColor(Color.black);
+					g2d.fillRect((i+1)*espace, (j+1)*espace, espace, espace);
+				}
+				
 				if (cell.isFourmis()) // s'il y a une foumi dans la cellule
 				{
 					g2d.setColor(Color.red);

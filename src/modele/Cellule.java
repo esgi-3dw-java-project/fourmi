@@ -20,6 +20,7 @@ public class Cellule
 	private boolean nid;
 	/**presence d'au moins une fourmis*/
 	private boolean fourmis;
+	private boolean obs;
 	/**odeur du nid*/
 	private double odeurNid;
 
@@ -141,6 +142,15 @@ public class Cellule
 	 */
 	public void setNid(boolean nid) {
 		this.nid = nid;
+	}
+	
+	public boolean isObstacle(){
+		return obs;
+	}
+	
+	
+	public void setObstacle(boolean obs){
+		this.obs = obs;
 	}
 
 	/**

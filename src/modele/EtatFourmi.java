@@ -1,5 +1,5 @@
 package modele;
 
 public enum EtatFourmi {
-CHERCHER, PRENDRE, REVENIR, DEPOSER;
+CHERCHER, PRENDRE, REVENIR, DEPOSER, EVITER;
 }

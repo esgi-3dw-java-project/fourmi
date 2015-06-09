@@ -15,13 +15,6 @@ public class LesFourmis
 	{
 		Gui g = new Gui();
 		g.launch();
-		
-		//int tailleTerrain = 70;
-		//int nbFourmis = 30;
-		//int tauxDeRaffraichissementEnMilliseconde = 16;
-		//Terrain terrain = new Terrain(tailleTerrain, nbFourmis);
-		//new PanelEnvironment(terrain, tauxDeRaffraichissementEnMilliseconde);
-
 	}
 
 
