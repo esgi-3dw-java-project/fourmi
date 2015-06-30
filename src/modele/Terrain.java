@@ -115,7 +115,7 @@ public class Terrain {
 	private void initObstacle(){
 		setObstacle((taille ) / 4, (8*taille) / 6, 2,2); // 0 = carré ou rectangle / 1 = losange / 2 = forme random
 		setObstacle((taille ) / 9, (8*taille) / 3, 1,2); 
-		setObstacle((taille ) / 3, (8*taille) / 9, 3,2); 
+		setObstacle((taille ) / 3, (8*taille) / 9, 2,2); 
 	}
 	
 	private void setObstacle(int xObs, int yObs, int tailleZone,int typeObstacle){
